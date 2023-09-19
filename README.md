@@ -96,8 +96,8 @@ fmt.Println(myVar.IsSet()) // false
 	    MyVar: u.NewInt(42),
     }
 	
-	
 }
+```
 
 ## Supported types
 
