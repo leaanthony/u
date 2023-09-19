@@ -1,8 +1,8 @@
 package u_test
 
 import (
+	"github.com/leaanthony/u"
 	"testing"
-	"u"
 )
 
 func TestVar_String(t *testing.T) {
