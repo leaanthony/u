@@ -95,8 +95,6 @@ fmt.Println(myVar.IsSet()) // false
     myStruct := MyStruct{
 	    MyVar: u.NewInt(42),
     }
-	
-}
 ```
 
 ## Supported types
