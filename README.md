@@ -21,6 +21,11 @@ func processPreferences(prefs Preferences) {
     thirdPartyLibrary.EnableFeatureX(prefs.UseFeatureX)
     thirdPartyLibrary.SetThreshold(prefs.Threshold)
 }
+
+func main() {
+    var prefs Preferences
+    processPreferences(prefs)
+}
 ```
 
 There is no real way to know if `UseFeatureX` or `Threshold` have been set or not.
@@ -33,8 +38,6 @@ type Preferences struct {
     Threshold u.Int
 }
 
-var prefs Preferences
-
 func processPreferences(prefs Preferences) {
     // #winning
     if prefs.UseFeatureX.IsSet() {
@@ -44,6 +47,12 @@ func processPreferences(prefs Preferences) {
         thirdPartyLibrary.SetThreshold(prefs.Threshold.Get())
     }
 }
+
+func main() {
+    var prefs Preferences
+    processPreferences(prefs)
+}
+
 ```
 
 ## Why should any of this matter? 
@@ -52,6 +61,8 @@ It matters when you are working with third party libraries or frameworks that ha
 Perhaps the default value for a preference is `true` and you only want to set it if an explicit value has been specified.
 
 ## Usage
+
+### Basic Usage
 
 ```go
 var myVar u.Int
@@ -71,6 +82,22 @@ myVar.Unset()
 // Check if the value has been set
 fmt.Println(myVar.IsSet()) // false
 ```
+
+### Structs
+
+`New` methods are provided for setting values in structs.
+
+```go
+    type MyStruct struct {
+        MyVar u.Int
+    }
+	
+    myStruct := MyStruct{
+	    MyVar: u.NewInt(42),
+    }
+	
+	
+}
 
 ## Supported types
 
