@@ -17,9 +17,9 @@ type Preferences struct {
 }
 
 func processPreferences(prefs Preferences) {
-	// Uh oh...we're in a heap of trouble here...
+    // Uh oh...we're in a heap of trouble here...
     thirdPartyLibrary.EnableFeatureX(prefs.UseFeatureX)
-	thirdPartyLibrary.SetThreshold(prefs.Threshold)
+    thirdPartyLibrary.SetThreshold(prefs.Threshold)
 }
 ```
 
@@ -40,10 +40,9 @@ func processPreferences(prefs Preferences) {
     if prefs.UseFeatureX.IsSet() {
         thirdPartyLibrary.EnableFeatureX(prefs.UseFeatureX.Get())
     }
-	if prefs.Threshold.IsSet() {
+    if prefs.Threshold.IsSet() {
         thirdPartyLibrary.SetThreshold(prefs.Threshold.Get())
     }
-
 }
 ```
 
