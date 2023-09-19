@@ -16,16 +16,16 @@ type Preferences struct {
     Threshold int
 }
 
-var prefs Preferences
-
-if prefs.UseFeatureX {
-    // Uh oh...was this explicitly set?
+func processPreferences(prefs Preferences) {
+	// Uh oh...we're in a heap of trouble here...
+    thirdPartyLibrary.EnableFeatureX(prefs.UseFeatureX)
+	thirdPartyLibrary.SetThreshold(prefs.Threshold)
 }
 ```
 
 There is no real way to know if `UseFeatureX` or `Threshold` have been set or not.
 
-Using this library we can do this:
+Using this library we can *eliminate* this problem:
 
 ```go
 type Preferences struct {
@@ -35,12 +35,15 @@ type Preferences struct {
 
 var prefs Preferences
 
-if prefs.UseFeatureX.IsSet() {
-    // Do something
-}
+func processPreferences(prefs Preferences) {
+    // #winning
+    if prefs.UseFeatureX.IsSet() {
+        thirdPartyLibrary.EnableFeatureX(prefs.UseFeatureX.Get())
+    }
+	if prefs.Threshold.IsSet() {
+        thirdPartyLibrary.SetThreshold(prefs.Threshold.Get())
+    }
 
-if prefs.Threshold.IsSet() {
-    // Do something
 }
 ```
 
@@ -50,8 +53,6 @@ It matters when you are working with third party libraries or frameworks that ha
 Perhaps the default value for a preference is `true` and you only want to set it if an explicit value has been specified.
 
 ## Usage
-
-### Basic Usage
 
 ```go
 var myVar u.Int
@@ -95,7 +96,7 @@ fmt.Println(myVar.IsSet()) // false
 
 ## Custom types
 
-Any type can be used with this library.
+Any type can be used with this library by creating a `u.Var` of that type. For example:
 
 ```go
 
