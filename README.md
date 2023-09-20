@@ -97,6 +97,10 @@ fmt.Println(myVar.IsSet()) // false
     }
 ```
 
+## Why not use pointer values?
+
+Yes, that's one way you can solve this issue. Personally, I try to avoid having pointer values as it increases the chance of dereferencing errors. It also feels like a hacky approach to the problem which is one missed test away from a runtime error. 
+
 ## Supported types
 
 - `u.Bool`
