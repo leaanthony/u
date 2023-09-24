@@ -90,12 +90,12 @@ fmt.Println(myVar.IsSet()) // false
 ```go
     type MyStruct struct {
         MyVar u.Int
-		MyOption u.Bool
+        MyOption u.Bool
     }
 	
     myStruct := MyStruct{
-	    MyVar: u.NewInt(42),
-		MyOption: u.True,
+        MyVar: u.NewInt(42),
+        MyOption: u.True,
     }
 ```
 
