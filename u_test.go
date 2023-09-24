@@ -457,7 +457,8 @@ func TestVar_Struct(t *testing.T) {
 		Value15 u.Complex64
 		Value16 u.Complex128
 		Value17 u.Bool
-		Value18 u.String
+		Value18 u.Bool
+		Value19 u.String
 	}
 
 	prefs := Preferences{
@@ -477,8 +478,9 @@ func TestVar_Struct(t *testing.T) {
 		Value14: u.NewRune('x'),
 		Value15: u.NewComplex64(42 + 42i),
 		Value16: u.NewComplex128(42 + 42i),
-		Value17: u.NewBool(true),
-		Value18: u.NewString("hello"),
+		Value17: u.True,
+		Value18: u.False,
+		Value19: u.NewString("hello"),
 	}
 
 	if prefs.Value1.Get() != 42 {
@@ -532,7 +534,10 @@ func TestVar_Struct(t *testing.T) {
 	if prefs.Value17.Get() != true {
 		t.Errorf("Get() = %v, want true", prefs.Value17.Get())
 	}
-	if prefs.Value18.Get() != "hello" {
-		t.Errorf("Get() = %v, want \"hello\"", prefs.Value18.Get())
+	if prefs.Value18.Get() != false {
+		t.Errorf("Get() = %v, want false", prefs.Value18.Get())
+	}
+	if prefs.Value19.Get() != "hello" {
+		t.Errorf("Get() = %v, want \"hello\"", prefs.Value19.Get())
 	}
 }

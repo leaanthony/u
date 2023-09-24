@@ -90,10 +90,12 @@ fmt.Println(myVar.IsSet()) // false
 ```go
     type MyStruct struct {
         MyVar u.Int
+		MyOption u.Bool
     }
 	
     myStruct := MyStruct{
 	    MyVar: u.NewInt(42),
+		MyOption: u.True,
     }
 ```
 
@@ -121,6 +123,11 @@ Yes, that's one way you can solve this issue. Personally, I try to avoid having 
 - `u.String`
 - `u.Byte`
 - `u.Rune`
+
+## Values
+
+- `u.True`
+- `u.False`
 
 ## Custom types
 

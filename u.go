@@ -1,5 +1,11 @@
 package u
 
+// True is a `bool` that is set to true
+var True = NewBool(true)
+
+// False is a `bool` that is set to false
+var False = NewBool(false)
+
 // Bool is a `bool` that can be unset
 type Bool = Var[bool]
 
